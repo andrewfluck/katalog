@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("com.vanniktech.maven.publish")
+    alias(libs.plugins.kotlin.compose.compiler)
 }
 
 android {
@@ -25,10 +26,7 @@ android {
             "-Xopt-in=kotlin.RequiresOptIn"
         )
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion =
-            libs.versions.androidx.compose.compiler.get()
-    }
+
     sourceSets {
         getByName("main").java.srcDir("src/main/kotlin")
         getByName("test").java.srcDir("src/test/kotlin")

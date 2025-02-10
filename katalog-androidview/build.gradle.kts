@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("kotlin-kapt")
     id("com.vanniktech.maven.publish")
+    alias(libs.plugins.kotlin.compose.compiler)
 }
 
 android {
@@ -28,10 +29,7 @@ android {
             "-Xexplicit-api=strict"
         )
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion =
-            libs.versions.androidx.compose.compiler.get()
-    }
+
     sourceSets {
         getByName("main").java.srcDir("src/main/kotlin")
         getByName("test").java.srcDir("src/test/kotlin")

@@ -1,7 +1,33 @@
 plugins {
     id("com.android.library")
-    id("kotlin-android")
     id("com.vanniktech.maven.publish")
+    alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.compose.compiler)
+}
+
+kotlin {
+    applyDefaultHierarchyTemplate()
+    jvmToolchain(17)
+
+    androidTarget()
+    jvm()
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(kotlin("stdlib"))
+                implementation(project(":katalog"))
+
+                implementation(compose.ui)
+                implementation(compose.uiTooling)
+                implementation(compose.foundation)
+                implementation(compose.material)
+            }
+        }
+
+        val androidMain by getting
+    }
 }
 
 android {
@@ -18,17 +44,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
-        freeCompilerArgs = freeCompilerArgs + listOf(
-            "-Xexplicit-api=strict",
-            "-Xopt-in=kotlin.RequiresOptIn"
-        )
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion =
-            libs.versions.androidx.compose.compiler.get()
-    }
     sourceSets {
         getByName("main").java.srcDir("src/main/kotlin")
         getByName("test").java.srcDir("src/test/kotlin")
@@ -38,14 +53,6 @@ android {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
-    implementation(project(":katalog"))
-
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.material)
-
     testImplementation(libs.androidx.test.core)
     testImplementation(libs.androidx.test.runner)
     testImplementation(libs.androidx.test.rules)
