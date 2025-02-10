@@ -9,7 +9,7 @@ plugins {
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.kotlin.compose.compiler) apply false
     alias(libs.plugins.spotless) apply false
-    alias(libs.plugins.publish)
+//    alias(libs.plugins.publish)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
