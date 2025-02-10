@@ -3,14 +3,16 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.compose.compiler)
-//    alias(libs.plugins.publish)
+    id("maven-publish")
 }
 
 kotlin {
     applyDefaultHierarchyTemplate()
     jvmToolchain(17)
 
-    androidTarget()
+    androidTarget {
+        publishLibraryVariants("release")
+    }
     jvm()
 
     sourceSets {

@@ -1,9 +1,9 @@
 plugins {
     id("com.android.library")
-//    id("com.vanniktech.maven.publish")
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.compose.compiler)
+    id("maven-publish")
 }
 
 kotlin {
