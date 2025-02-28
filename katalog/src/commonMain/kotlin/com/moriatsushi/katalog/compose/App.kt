@@ -5,11 +5,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.moriatsushi.katalog.compose.navigation.rememberExtNavState
 import com.moriatsushi.katalog.compose.page.MainPage
 import com.moriatsushi.katalog.compose.res.materialColors
-import com.moriatsushi.katalog.compose.util.BackHandler
 import com.moriatsushi.katalog.compose.widget.ErrorMessage
 import com.moriatsushi.katalog.domain.ExtWrapperScopeImpl
 import com.moriatsushi.katalog.ext.ExperimentalKatalogExtApi
@@ -38,7 +39,7 @@ internal expect fun AppWindow(
     darkTheme: Boolean,
 )
 
-@OptIn(ExperimentalKatalogExtApi::class)
+@OptIn(ExperimentalKatalogExtApi::class, ExperimentalComposeUiApi::class)
 @Composable
 private fun MainContent(
     viewModel: KatalogViewModel,

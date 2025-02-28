@@ -1,6 +1,5 @@
 package com.moriatsushi.katalog.compose
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.toArgb
@@ -14,8 +13,6 @@ internal actual fun AppWindow(
     darkTheme: Boolean,
 ) {
     val window = LocalContext.current.getActivity()?.window ?: return
-
-    BackHandler {  }
 
     val view = LocalView.current
     window.statusBarColor = MaterialTheme.colors.background.toArgb()

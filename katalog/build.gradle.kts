@@ -25,6 +25,7 @@ kotlin {
                 implementation(compose.uiTooling)
                 implementation(compose.material)
                 implementation(compose.materialIconsExtended)
+                implementation(libs.androidx.compose.ui.backhandler)
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.8.2")
             }
         }
