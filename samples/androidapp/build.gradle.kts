@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.moriatsushi.katalog.android_sample"
