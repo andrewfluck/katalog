@@ -10,6 +10,12 @@ kotlin {
     applyDefaultHierarchyTemplate()
     jvmToolchain(17)
 
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    )
+
     androidTarget()
     jvm()
 
